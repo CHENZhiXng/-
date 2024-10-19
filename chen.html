@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            padding: 160px 0 0 240px;
+        }
+
+        /* 门容器样式 */
+        .doorWrap {
+            width: 320px;
+            height: 320px;
+            border: 1px solid #666;
+            perspective: 500px;
+            position: relative;
+            display: flex;
+        }
+
+        /* 左门右门的共有样式 */
+        .leftDoor,
+        .rightDoor {
+            width: 50%;
+            height: 100%;
+            background-color: rgb(194, 37, 37);
+            transition: 1.2s;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #333;
+        }
+
+        /* 设置旋转元素的基点，左边大门以左侧为基准点旋转 */
+        .leftDoor {
+            transform-origin: left;
+        }
+
+        /* 设置旋转元素的基点，右边大门以右侧为基准点旋转 */
+        .rightDoor {
+            transform-origin: right;
+        }
+
+        /* 当鼠标悬浮的时候，设置开门的幅度，左门往左侧开 */
+        .doorWrap:hover .leftDoor {
+            transform: rotateY(-130deg);
+        }
+
+        /* 右门往右侧开 */
+        .doorWrap:hover .rightDoor {
+            transform: rotateY(130deg);
+        }
+
+        /* 内容区的定位层级稍微低一些 */
+        .content {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background-color: #abf;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="doorWrap">
+        <div class="leftDoor">陈俊杰</div>
+        <div class="rightDoor">请开门</div>
+        <div class="content"><!DOCTYPE html>
+            <html lang="en">
+            
+            <head>
+                <meta charset="UTF-8">
+                <title>Emoji</title>
+                <link rel="stylesheet" href="index.css" type="text/css">
+                <style>
+                    * {
+                        padding: 0;
+                        margin: 0;
+                        box-sizing: border-box;
+                    }
+            
+                    body {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        min-height: 100vh;
+                        background: #13e7ee;
+                    }
+            
+                    .face {
+                        position: relative;
+                        background: #ffcd00;
+                        width: 300px;
+                        height: 300px;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+            
+                    .face::before {
+                        content: '';
+                        position: absolute;
+                        width: 150px;
+                        height: 70px;
+                        background: #b57700;
+                        top: 180px;
+                        border-bottom-left-radius: 70px;
+                        border-bottom-right-radius: 60px;
+                        transition: 0.5s;
+                    }
+            
+                    .face:hover::before {
+                        top: 210px;
+                        width: 150px;
+                        height: 20px;
+                        background: #b57700;
+                        border-bottom-left-radius: 0px;
+                        border-bottom-right-radius: 0px;
+                    }
+            
+                    .eyes {
+                        position: relative;
+                        top: -40px;
+                        display: flex;
+                    }
+            
+                    .eyes .eye {
+                        position: relative;
+                        width: 80px;
+                        display: block;
+                        height: 80px;
+                        background: #fff;
+                        margin: 0 15px;
+                        border-radius: 50%;
+                    }
+            
+                    .eyes .eye::before {
+                        content: '';
+                        position: absolute;
+                        width: 40px;
+                        height: 40px;
+                        background: #333;
+                        border-radius: 50%;
+                        top: 50%;
+                        left: 25px;
+                        transform: translate(-50%, -50%);
+                    }
+                </style>
+            </head>
+            
+            <body>
+            
+                <div class="face">
+                    <div class="eyes">
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                    </div>
+                </div>
+            
+                <script>
+                    let body = document.querySelector("body")
+                    body.addEventListener("mousemove", eyeball);
+            
+                    function eyeball() {
+                        var eye = document.querySelectorAll(".eye");
+                        eye.forEach(eye => {
+                            let x = (eye.getBoundingClientRect()
+                                .left) + (eye.clientWidth / 2);
+                            let y = (eye.getBoundingClientRect()
+                                .top) + (eye.clientHeight / 2);
+                            let radian = Math.atan2(event.pageX -
+                                x, event.pageY - y);
+                            let rot = (radian * (180 / Math.PI) *
+                                -1) + 270;
+                            // 控制度数旋转
+                            eye.style.transform = "rotate(" + rot
+                                + "deg)";
+                        });
+                    }
+                </script>
+            </body>
+            
+            </html></div>
+    </div>
+</body>
+
+</html>
